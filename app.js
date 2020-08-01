@@ -22,14 +22,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/products', product);
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'front_end', 'build')));
+// if(process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(__dirname, 'front_end', 'build')));
   
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'front_end', 'build', 'index.html'))
-    });
+//     app.get('*', (req, res) => {
+//       res.sendFile(path.join(__dirname, 'front_end', 'build', 'index.html'))
+//     });
     
-  }
+//   }
 
 let port = process.env.PORT || 8080;
 
