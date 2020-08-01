@@ -22,6 +22,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/products', product);
 
+if (process.env.NODE_ENV === "production") {
+
+    app.use(express.static("build"));
+ 
+ 
+    app.get("*", (req, res) => {
+         res.sendFile(path.resolve(__dirname,  "build", "webapp.html"));
+     });
+ 
+   }
+
 let port = process.env.PORT || 8080;
 
 app.listen(port, () => {
